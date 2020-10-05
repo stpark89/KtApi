@@ -57,7 +57,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         log.info("JwtAuthenticationTokenFilter.doFilterInternal");
 
-        if(!loginUrl.equals(request.getRequestURI())){
+        if(!loginUrl.equals(request.getRequestURI()) && !"/api/connectionTest".equals(request.getRequestURI())){
             String token = "";
             try{
 

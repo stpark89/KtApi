@@ -33,6 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private JwtAuthenticationEntryPoint unauthorizedHandler;
 
     private JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter;
+    @Autowired
     private PasswordEncoder passwordEncoder;
     private UserDetailsService userDetailsService;
 
@@ -47,11 +48,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     // 비밀번호 암호화
+    /**
     @Inject
     public void setPasswordEncoder(PasswordEncoder bcryptPasswordEncoder) {
         log.info("SecurityConfig.setPasswordEncoder");
         this.passwordEncoder = bcryptPasswordEncoder;
-    }
+    }**/
 
     // UserDetailService
     @Inject
@@ -65,6 +67,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         log.info("SecurityConfig.setJwtAuthenticationTokenFilter");
         this.jwtAuthenticationTokenFilter = jwtAuthenticationTokenFilter;
     }
+
+
 
     // AuthenticationManagerBuilder : 스프링 시큐리티의 인증에 대한 지원을 설정
     @Inject
